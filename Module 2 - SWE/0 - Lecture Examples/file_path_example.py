@@ -8,21 +8,21 @@ else:
     print("Cannot locate train_data at path: ", relative_path)
 
 # check if we can see "test_data.txt" via relative path option #1
-relative_path = "subfolder/test_data.txt"
+relative_path = "ENGR315-sp2026-student/Module 2 - SWE\0 -  Lecture Examples/subfolder/train_data.txt"
 if exists(relative_path):
     print("Can see test_data!")
 else:
     print("Cannot locate test_data at path: ", relative_path)
 
 # check if we can see "test_data.txt" via relative path option #2
-relative_path = "./subfolder/test_data.txt"
+relative_path = "./subfolder/train_data.txt"
 if exists(relative_path):
     print("Can see test_data!")
 else:
     print("Cannot locate test_data at path: ", relative_path)
 
 # check an absolute path based upon Windows notation
-absolute_path = r"C:\Users\Jason Work\Documents\GitHub\ENGR298-2022-Private\lecture-examples\week8-file-paths\train_data.txt"
+absolute_path = r"C:\Users\lenni\OneDrive\desktop\ENGR 315 Computational Methods\ENGR315-sp2026-student\Module 2 - SWE\0 - Lecture Examples\train_data.txt"
 if exists(absolute_path):
     print("Can see train_data!")
 else:
