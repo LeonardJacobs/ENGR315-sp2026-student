@@ -1,25 +1,26 @@
 import numpy as np
 
 # Approach #1: do a manual import for the file
-path = '../../data/ekg/mitdb_201.csv'
+path = 'data/ekg/mitdb_201.csv'
 
 # open the file
 try:
-    file = open(path)
+    files = open(path)
+    print("Found file")
 except:
     print('Could not open file! Check path variable')
 
 # read the first line to get the headers
-header = file.readline()
+header = files.readline()
 
 # read the second line to get the units
-units = file.readline()
+units = files.readline()
 
 # make a list to hold this information
 points = list()
 
 # iterate through remainder of file
-for line in file:
+for line in files:
     # print out line contents
     print(line)
 
@@ -35,7 +36,7 @@ for line in file:
     points.append((time, ml2, v1))
 
 # close file, we're done
-file.close()
+files.close()
 
 # Approach #2: import the CSV file using numpy
 path = '../../data/ekg/mitdb_201.csv'

@@ -31,7 +31,7 @@ def main(full_path_to_file):
     sampling_rate = 1000
 
     # Step 1: Establish a baseline by examining the force data the after for first ~20 points
-
+    print(force_plate)
     # set an amount of time to average and find the baseline
     baseline_length = 0 ### your code here ###
 
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     filename = "FP1.txt"
 
     # load force plate data (this path may change based upon where you place this file in your project)
-    path_to_data_folder = "../../../data/drop-jump/force-plate/"
+    path_to_data_folder = "data/drop-jump/force-plate/"
 
     ### Do not modify below this line ###
 
