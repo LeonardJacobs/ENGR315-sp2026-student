@@ -31,9 +31,10 @@ def main(full_path_to_file):
     sampling_rate = 1000
 
     # Step 1: Establish a baseline by examining the force data the after for first ~20 points
-    print(force_plate)
+    print(force_plate[0:20])
     # set an amount of time to average and find the baseline
-    baseline_length = 0 ### your code here ###
+    baseline_length = np.average(force_plate[0:20])
+    print(f'Base average: {baseline_length}')
 
     # over the baseline, determine the average signal value
     baseline = 0 ### your code here ###
@@ -53,7 +54,7 @@ def main(full_path_to_file):
     force_plate_list = force_plate.tolist()
 
     # walk through the list but start at the end of our baseline
-    for index in range(baseline_length, len(force_plate_list)):
+    for index in range(int(baseline_length), len(force_plate_list)):
         # grab the current value in the list
         value = force_plate_list[index]
 
