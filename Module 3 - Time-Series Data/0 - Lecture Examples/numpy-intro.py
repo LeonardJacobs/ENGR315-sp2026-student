@@ -15,7 +15,7 @@ item2 = arr2d[2, 2]
 # get the first row, second row, and right column
 first_row = arr2d[0, :]
 second_row = arr2d[1, :]
-right_column = arr2d[:, 1]
+right_column = arr2d[:, 2]
 print(first_row, "\n",right_column)
 # get the first two rows
 first_two = arr2d[:2]

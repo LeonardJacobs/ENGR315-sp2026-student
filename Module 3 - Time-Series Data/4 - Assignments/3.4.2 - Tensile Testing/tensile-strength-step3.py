@@ -60,9 +60,13 @@ def calculate_stress(force, sample_diameter):
     :return: An array of stresses experienced by the sample in Kilo Pascals (MPa)
     """
 
-    ### YOUR SOLUTION FROM STEP 1 TEMPLATE HERE ###
-
-    return None
+    # calculate the cross-section area (mm^2)
+    ### your code here ###
+    area = np.pi * sample_diameter ** 2 / 4
+    # calculate stress (MPa) from load (kN) and cross-sectional area
+    ### your code here ###
+    stress = force / (area / 1000)
+    return stress
 
 
 def calculate_max_strength_strain(strain, stress):
@@ -75,9 +79,16 @@ def calculate_max_strength_strain(strain, stress):
     Fracture Strain: the maximum strain experienced before fracture
     """
 
-    ### YOUR SOLUTION FROM STEP 2 TEMPLATE HERE ###
+    # calculate the maximum stress experienced
+    ultimate_tensile_stress = -1
+    for i in stress:
+        if i > ultimate_tensile_stress:
+            ultimate_tensile_stress = i
 
-    return -1, -1
+    # calculate the maximum strain experienced
+    fracture_strain = max(strain)
+
+    return ultimate_tensile_stress, fracture_strain
 
 def calculate_elastic_modulus(strain, stress):
     """
@@ -90,10 +101,14 @@ def calculate_elastic_modulus(strain, stress):
         slope: the slope for the linear region of the strain/stress data
         intercept: y-intercept for linear region best fit of strain/stress data
     """
-
+    ultimate_tensile_stress = -1
+    for i in range(len(stress)):
+        if stress[i] > ultimate_tensile_stress:
+            ultimate_tensile_stress = i
+            maxIndex = i
     # dummy variables the function should over write
-    linear_index = None
-    slope = None
+    linear_index = 0.4 * maxIndex
+    slope = (stress[maxIndex] - stress[0]) / (strain[maxIndex] - stress[0])
     intercept = None
 
     # Step 3a: find the point that is 40% of peak stress

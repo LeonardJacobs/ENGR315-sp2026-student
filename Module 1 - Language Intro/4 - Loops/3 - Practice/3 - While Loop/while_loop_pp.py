@@ -14,7 +14,7 @@ while a != 5:
 # first, we're going to write the condition of a while loop
 # this loop is going to multiply the variable x by 2 3 times
 b = 5
-x = 0
+x = -2
 while x != 0:
     b = b * 2
     x = x + 1
@@ -24,9 +24,16 @@ while x != 0:
 c = 3
 y = 0
 while y < 5:
-    break
+    y += 1
+    if y >= 5:
+        break
 
 # it's time to combine both of these concepts.
 # write a loop entirely from scratch that prints out a statement 6 times
 # the counter variable you will use is z
 z = 0
+while True:
+    z += 1
+    print(f'This while loop is on its {z}th run')
+    if z >= 6:
+        break
