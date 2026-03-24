@@ -65,6 +65,9 @@ def first_question(data):
     # When was the first positive COVID case in Harrisonburg?
     :return:
     """
+    for i in data:
+        if i[1] == "Rockingham County":
+            print("yes")
 
     # your code here
     return
@@ -94,8 +97,8 @@ def third_question(data):
 if __name__ == "__main__":
     data = parse_nyt_data('us-counties.csv')
 
-    for (date,county, state, fips, cases, deaths) in data:
-        print('On ', date, ' in ', county, ' ', state, ' there were ', cases, ' cases and ', deaths, ' deaths')
+    # for (date,county, state, fips, cases, deaths) in data:
+    #     print('On ', date, ' in ', county, ' ', state, ' there were ', cases, ' cases and ', deaths, ' deaths')
 
 
     # write code to address the following question: Use print() to display your responses.
