@@ -65,11 +65,20 @@ def first_question(data):
     # When was the first positive COVID case in Harrisonburg?
     :return:
     """
-    for i in data:
-        if i[1] == "Rockingham County":
-            print("yes")
-
-    # your code here
+    #initilialize list
+    county = []
+    town = []
+    # examine each case and see if said case is in Harrisonburg or Rockingham County
+    for i in range(len(data)):
+        if (data[i][1] == "Rockingham") & (data[i][2] == "Virginia"):
+            county.append(data[i])
+        if data[i][1] == "Harrisonburg city":
+            town.append(data[i])
+    # store the first cases in a list 
+    firstCase = [county[0], town[0]]
+    # print out the answer
+    print(f'The first positive COVID 19 case in Rockingham County was on {firstCase[0][0]}')
+    print(f'The first positive COVID 19 case in Harrisonburg was on {firstCase[1][0]}')
     return
 
 def second_question(data):
@@ -79,8 +88,41 @@ def second_question(data):
     # What day was the greatest number of new daily cases recorded in Rockingham County?
     :return:
     """
-
-    # your code here
+    # Similar approach as the first question, but the 2nd half will be different
+    # Initilialize list
+    county = []
+    town = []
+    # examine each case and see if said case is in Harrisonburg or Rockingham County
+    for i in range(len(data)):
+        if (data[i][1] == "Rockingham") & (data[i][2] == "Virginia"):
+            county.append(data[i])
+        if data[i][1] == "Harrisonburg city":
+            town.append(data[i])
+    # Initialize a max cases variable to compare
+    maxCountyCases = 0
+    # Set a previous value to find daily cases
+    previous = 0
+    for x in county:
+        dailyCases = int(x[4]) - previous
+        previous = int(x[4])
+        if dailyCases > maxCountyCases:
+            maxCountyCases = dailyCases
+            index = county.index(x)
+    # Print out the answer
+    print(f'The greatest amount of daily COVID cases in Rockingham county was {maxCountyCases} cases on {county[index][0]}')
+    
+    # Code is repeated for Harrisonburg
+    maxCountyCases = 0
+    # Set a previous value to find daily cases
+    previous = 0
+    for x in town:
+        dailyCases = int(x[4]) - previous
+        previous = int(x[4])
+        if dailyCases > maxCountyCases:
+            maxCountyCases = dailyCases
+            index = town.index(x)
+    # Print out the answer
+    print(f'The greatest amount of daily COVID cases in Harrisonburg was {maxCountyCases} cases on {town[index][0]}')
     return
 
 def third_question(data):
@@ -90,8 +132,60 @@ def third_question(data):
     # This is the 7-day period where the number of new cases was maximal.
     :return:
     """
+    # Similar approach as the first question, but the 2nd half will be different
+    # Initilialize list
+    county = []
+    town = []
+    # examine each case and see if said case is in Harrisonburg or Rockingham County
+    for i in range(len(data)):
+        if (data[i][1] == "Rockingham") & (data[i][2] == "Virginia"):
+            county.append(data[i])
+        if data[i][1] == "Harrisonburg city":
+            town.append(data[i])
+    # Find Daily case numbers
     
-    # your code here
+    # Set a previous value to find daily cases
+    # Starting with Rockingham...
+    previous = 0
+    daily = []
+    for x in county:
+        dailyCases = int(x[4]) - previous
+        previous = int(x[4])
+        daily.append(dailyCases)
+    # Find 7-day sums
+    caseSum = 0
+    caseIndex = 0
+    for i in range(len(daily) - 6):
+        totalSum = sum(daily[i:i+7])
+        if totalSum > caseSum:
+            caseSum = totalSum
+            caseIndex = i
+
+    # Find the start and stop days of the 7 day period
+    start = county[caseIndex][0]
+    end = county[caseIndex + 6][0]
+    print(f'The worst 7-day period COVID-19 cases in Rockingham County was {caseSum} total cases from {start} to {end}')
+
+    # The same logic is repeated for Harrisonburg
+    previous = 0
+    daily = []
+    for x in town:
+        dailyCases = int(x[4]) - previous
+        previous = int(x[4])
+        daily.append(dailyCases)
+    # Find 7-day sums
+    caseSum = 0
+    caseIndex = 0
+    for i in range(len(daily) - 6):
+        totalSum = sum(daily[i:i+7])
+        if totalSum > caseSum:
+            caseSum = totalSum
+            caseIndex = i
+
+    # Find the start and stop days of the 7 day period
+    start = town[caseIndex][0]
+    end = town[caseIndex + 6][0]
+    print(f'The worst 7-day period COVID 19 cases in Harrisonburg was {caseSum} total cases from {start} to {end}')
     return
 
 if __name__ == "__main__":
