@@ -14,13 +14,13 @@ def generate_csv_file(filename, results):
     # Step 1: create a variable to hold the file name
 
     # uncomment this line
-    output_file_name = "tensile_data.csv"
+    output_file_name = filename
 
     # Step 2: use open() to open the file in write mode. Set the return of open()
     # to a variable name that will be your file handle
 
     # uncomment the line below
-    file = open(output_file_name, )
+    file = open(output_file_name, 'w')
 
     # Step 3: write out the header for the CSV file. This string is provided for you so
     # your data can be loaded and checked. Use write().
@@ -48,15 +48,15 @@ def generate_csv_file(filename, results):
         # Make sure an endline character '\n' is always at the end of your string!
 
         # uncomment the line below
-        string_to_write = name + material_type + tensile_strength + fracture_strain + modulus + yield_strength
+        string_to_write = name + ',' + material_type + ',' + str(tensile_strength) + ',' + str(fracture_strain) + ',' + str(modulus) + ',' + str(yield_strength) + '\n'
 
         # Finally, given that long string, write it to a file
 
-        ### your code here ###
+        file.write(string_to_write)
 
     # close the file once all writing is complete
     # uncomment this line before you're done
-    ##file.close()
+    file.close()
 
     # since we got here, it must have worked.
     return True
